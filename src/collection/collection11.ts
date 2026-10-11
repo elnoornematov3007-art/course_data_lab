@@ -3,5 +3,17 @@
 */
 
 export function groupBy<T extends Record<string, any>>(arr: T[], key: keyof T): Map<T[keyof T], T[]> {
+  const map = new Map<T[keyof T], T[]>();
 
+  for (const item of arr) {
+    const value = item[key];
+
+    if (!map.has(value)) {
+      map.set(value, []);
+    }
+
+    map.get(value)!.push(item);
+  }
+
+  return map;
 }

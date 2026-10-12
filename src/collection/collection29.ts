@@ -5,5 +5,8 @@
 type User = {active: boolean, progress: number}
 
 export function calculateTotalProgress(users: User[]): number {
+  	const filteredUsers = users.filter(user => user.active && user.progress > 50);
+  	const total = filteredUsers.reduce((sum, user) => sum + user.progress, 0);
 
+  	return filteredUsers.length > 0	? total / filteredUsers.length : 0;
 }

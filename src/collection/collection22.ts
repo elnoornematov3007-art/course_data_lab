@@ -3,7 +3,7 @@
 */
 
 export function sumProperty<T>(objects: T[], property: keyof T): number {
-	
+	return objects.reduce((sum, object) => sum + Number(object[property]), 0);
 }
 
 

@@ -3,9 +3,12 @@
 */
 
 import { User } from "./user";
+import "reflect-metadata";
+import { Type } from "class-transformer";
 
 export class Employee {
   name: string;
+  @Type(() => User)
   manager: User | null; // Требует декоратора для типа
 
   constructor(name: string, manager: User | null) {

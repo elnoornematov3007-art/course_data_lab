@@ -3,10 +3,13 @@
 */
 
 import { User } from "./user";
+import { Type } from "class-transformer";
+import "reflect-metadata";
 
 export class Order {
   id: number;
   product: string;
+  @Type(() => User)
   customer: User; // Требует декоратора
 
   constructor(

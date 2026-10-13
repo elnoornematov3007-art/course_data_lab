@@ -3,9 +3,12 @@
 */
 
 import { User } from "./user";
+import "reflect-metadata";
+import { Type } from "class-transformer";
 
 export class Team {
   name: string;
+  @Type(() => User)
   members: User[]; // Требует декоратора
   
   constructor(name: string, members: User[]) {

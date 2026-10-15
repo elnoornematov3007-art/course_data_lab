@@ -11,7 +11,12 @@ export function validateBookStructure(xml: string): boolean {
   let isValid = true;
 
   // TODO: Если встречается тег 'book' без атрибута 'id', установите isValid = false
-
+  parser.onopentag = (node) => {
+    if (node.name === "book" && !("id" in node.attributes)) {
+      isValid = false;
+    }
+  };
+  
   parser.write(xml).close();
   return isValid;
 }
